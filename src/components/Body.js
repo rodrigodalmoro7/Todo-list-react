@@ -2,7 +2,12 @@ import React from "react";
 
 function Body(){
 
-    return <h1>Aqui vai o codigo</h1>
+    return (
+        <>
+            <input type="text" placeholder="Digite uma tarefa" />
+            <button>Adicionar!</button>
+        </>
+    )
 }
 
 export default Body;
