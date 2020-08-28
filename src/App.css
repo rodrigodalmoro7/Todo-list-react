@@ -5,8 +5,22 @@
     box-sizing: border-box;
 }
 
+Header {
+    text-align: center;
+}
+
 body {
+    width: 100vw;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     background-color: #333;
     font: 14px sans-serif;
     color: #f5f5f5f5;
+}
+
+input {
+    width: 400px;
 }
