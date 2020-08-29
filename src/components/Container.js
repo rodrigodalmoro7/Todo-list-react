@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-function Body(){
+
+function Container(){
 
     const [tasks, setTasks] = useState([{newTask:"Estudar React", owner:"Luigi", simpleId:"testeUm1010"}]);
     const [newTask, setNewTask] = useState(""); //string vazia
@@ -16,30 +17,31 @@ function Body(){
     }
 
     return (
-        <>  
-            <input value={newTask} placeholder="Digite uma nova tarefa!" type="text" onChange={(e) => setNewTask(e.target.value)} />
+        <container>  
+            <input value={newTask} placeholder="Digite uma nova tarefa" type="text" onChange={(e) => setNewTask(e.target.value)} />
             <br />
-            <input value={owner} placeholder="Digite o nome do criador!" type="text" onChange={(e) => setOwner(e.target.value)} />
+            <input value={owner} placeholder="Digite o nome do criador" type="text" onChange={(e) => setOwner(e.target.value)} />
             <br />
             <button type="button" onClick={addNewTask}>
                 Criar!
             </button>
             <br />
             
-            <h3>{newTask}</h3>
-            <h3>{owner}</h3>
-
+            <div className="previewTask">
+                <h3>{newTask}</h3>
+                <h3>{owner}</h3>
+            </div>
+            
             <ul>
                 { tasks.map((eachTask) => (
-                
                     <li key={eachTask.simpleId}>
-                        <b>{ eachTask.owner }: </b>{ eachTask.newTask }.
-                    </li>
-                
+                        <b>{ eachTask.owner }: </b>{ eachTask.newTask }
+                    </li>            
                 ))}
             </ul>
-        </>
+
+        </container>
     )
 }
 
-export default Body;
+export default Container;
