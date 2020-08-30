@@ -17,7 +17,7 @@ function Container(){
     }
 
     return (
-        <container>  
+        <div id="container">  
             <input value={newTask} placeholder="Digite uma nova tarefa" type="text" onChange={(e) => setNewTask(e.target.value)} />
             <br />
             <input value={owner} placeholder="Digite o nome do criador" type="text" onChange={(e) => setOwner(e.target.value)} />
@@ -40,7 +40,7 @@ function Container(){
                 ))}
             </ul>
 
-        </container>
+        </div>
     )
 }
 
