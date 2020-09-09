@@ -1,47 +1,61 @@
 import React, { useState } from "react";
 
+function Container() {
+  const [scraps, setScraps] = useState([
+    { newScrap: "", owner: "", simpleId: "teste" },
+  ]); //valor inicial da variável
+  const [newScrap, setNewScrap] = useState("");
+  const [owner, setOwner] = useState("");
 
-function Container(){
+  function addNewScrap() {
+    const scrap = { newScrap, owner, simpleId: `${Date.now()}` };
 
-    const [tasks, setTasks] = useState([{newTask:"Estudar React", owner:"Luigi", simpleId:"testeUm1010"}]);
-    const [newTask, setNewTask] = useState(""); //string vazia
-    const [owner, setOwner] = useState("");
+    setScraps([...scraps, scrap]);
 
-    function addNewTask() {
-        const task = { newTask, owner, simpleId: `${Date.now()}`};
-  
-        setTasks([...tasks, task]);
-        // console.log(tasks);
-        setNewTask("");
-        setOwner("");
-    }
+    setNewScrap("");
+    setOwner("");
 
-    return (
-        <div id="container">  
-            <input value={newTask} placeholder="Digite uma nova tarefa" type="text" onChange={(e) => setNewTask(e.target.value)} />
-            <br />
-            <input value={owner} placeholder="Digite o nome do criador" type="text" onChange={(e) => setOwner(e.target.value)} />
-            <br />
-            <button type="button" onClick={addNewTask}>
-                Criar!
-            </button>
-            <br />
-            
-            <div className="previewTask">
-                <h3>{newTask}</h3>
-                <h3>{owner}</h3>
-            </div>
-            
-            <ul>
-                { tasks.map((eachTask) => (
-                    <li key={eachTask.simpleId}>
-                        <b>{ eachTask.owner }: </b>{ eachTask.newTask }
-                    </li>            
-                ))}
-            </ul>
+    // setScraps([...scraps, `Novo scrap ${Date.now()}`]); //renderiza a função novamente, alterando o estado
+  }
 
-        </div>
-    )
+  return (
+    <div id="container">
+      <input
+        value={newScrap}
+        placeholder="Tarefa"
+        type="text"
+        onChange={(e) => setNewScrap(e.target.value)}
+      />
+
+      <br />
+
+      <input
+        value={owner}
+        placeholder="Quem"
+        type="text"
+        onChange={(e) => setOwner(e.target.value)}
+      />
+
+      <br />
+
+      <div className="previewScrap">
+        <h3>{newScrap}</h3>
+        <h3>{owner}</h3>
+      </div>
+
+      <button type="button" onClick={addNewScrap}>
+        Adicionar Scrap
+      </button>
+
+      <ul>
+        {scraps.map((eachScrap) => (
+          <li key={eachScrap.simpleId}>
+            {eachScrap.owner}: {eachScrap.newScrap}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default Container;
