@@ -19,42 +19,40 @@ function Container() {
   }
 
   return (
-    <div id="container">
-      <input
-        value={newScrap}
-        placeholder="Tarefa"
-        type="text"
-        onChange={(e) => setNewScrap(e.target.value)}
-      />
+    <>
+      <div id="container">
+        <input
+          value={newScrap}
+          placeholder="Tarefa"
+          type="text"
+          onChange={(e) => setNewScrap(e.target.value)}
+        />
 
-      <br />
+        <br />
 
-      <input
-        value={owner}
-        placeholder="Quem"
-        type="text"
-        onChange={(e) => setOwner(e.target.value)}
-      />
+        <input
+          value={owner}
+          placeholder="Quem"
+          type="text"
+          onChange={(e) => setOwner(e.target.value)}
+        />
 
-      <br />
+        <br />
 
-      <div className="previewScrap">
-        <h3>{newScrap}</h3>
-        <h3>{owner}</h3>
+        <div className="previewScrap">
+          <h3>{newScrap}</h3>
+          <h3>{owner}</h3>
+        </div>
+
+        <button type="button" onClick={addNewScrap}>
+          Adicionar Scrap
+        </button>
+
+        <ul>
+          <>{List} </>
+        </ul>
       </div>
-
-      <button type="button" onClick={addNewScrap}>
-        Adicionar Scrap
-      </button>
-
-      <ul>
-        {scraps.map((eachScrap) => (
-          <li key={eachScrap.simpleId}>
-            {eachScrap.owner}: {eachScrap.newScrap}
-          </li>
-        ))}
-      </ul>
-    </div>
+    </>
   );
 }
 
